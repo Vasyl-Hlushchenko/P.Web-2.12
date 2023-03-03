@@ -20,7 +20,7 @@ class UserResponse(UserModel):
     phone: str= "0987654321"
     birthaday: date = date(year=1988, month=3, day=25)
     description: str = "Created first contact for test"
-    authuser_id: int = 1
+    authuser_id: int = 0
 
     class Config:
         orm_mode = True
