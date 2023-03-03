@@ -31,16 +31,17 @@ async def create_user(body: UserModel, db: Session, user: AuthUser) -> User:
 
 
 async def update_user(user_id: int, body: UserModel, db: Session, user: AuthUser) -> User| None:
-    user= db.query(User).filter(and_(User.id == user_id, User.authuser_id == user.id)).first()
-    if user:
-        user.first_name = body.first_name
-        user.second_name = body.second_name
-        user.email = body.email
-        user.phone = body.phone
-        user.birthaday = body.birthaday
-        user.description = body.description
+    usr= db.query(User).filter(and_(User.id == user_id, User.authuser_id == user.id)).first()
+    if usr:
+        usr.first_name = body.first_name
+        usr.second_name = body.second_name
+        usr.email = body.email
+        usr.phone = body.phone
+        usr.birthaday = body.birthaday
+        usr.description = body.description
+        usr.authuser_id = user.id
         db.commit()
-    return user
+    return usr
 
 
 async def remove_user(user_id: int, db: Session, user: AuthUser)  -> User | None:
